@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Main {
 
+    public static String username;
     public static void main(String[] args) {
         GenerateName generator = new GenerateName();
         System.out.println("Hello World!");
@@ -17,17 +18,29 @@ public class Main {
             switch (nameResponse) {
                 case 1:
                     System.out.print("Username: ");
-                    String name = scan.nextLine();
+                    username = scan.nextLine();
+                    System.out.println("Okay " + username + ", let's get started.");
                     break;
                 case 2:
                     System.out.println("Generating...");
-                    String username = generator.generateName();
-                    System.out.println("Your cool hacker name is " + username);
+                    username = generator.generateName();
+                    System.out.println("Your cool hacker name is " + username + ".");
+                    System.out.println("Keep?\n(1) Yes\n(2) No");
+                    int nameKeep = scan.nextInt();
+                        while (nameKeep != 1) {
+                            username = generator.generateName();
+                            System.out.println("Your cool hacker name is " + username + ".");
+                            System.out.println("Keep?\n(1) Yes\n(2) No");
+                            nameKeep = scan.nextInt();
+                        }
+                        System.out.println("Username set to " + username + ".");
+
                     break;
                 case 3:
                     System.out.println("Thanks for playing!");
                     System.exit(0);
 
             }
+
             }
     }
